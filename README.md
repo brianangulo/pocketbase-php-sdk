@@ -5,7 +5,7 @@
 ***
 
 ``` bash
-composer require mkay-development/pocketbase-php-sdk
+composer require jonathan-martz/pocketbase-php-sdk
 ```
 
 ``` php
