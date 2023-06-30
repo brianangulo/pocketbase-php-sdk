@@ -40,6 +40,7 @@ class Collection
      */
     public function getList(int $start = 1, int $end = 50, array $queryParams = []): array
     {
+        $queryParams['perPage'] = $end;
         $getParams = !empty($queryParams) ? http_build_query($queryParams) : "";
         $response = $this->doRequest($this->url . "/api/collections/" . $this->collection . "/records?" . $getParams, 'GET');
 
