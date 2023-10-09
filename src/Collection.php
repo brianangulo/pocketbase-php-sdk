@@ -48,6 +48,32 @@ class Collection
     }
 
     /**
+     * @param string $recordId
+     * @param string $field
+     * @param string $filepath
+     * @return void
+     */
+    public function upload(string $recordId, string $field, string $filepath): void
+    {
+        $ch = curl_init($this->url . "/api/collections/gallery_media/records/" . $recordId);
+        curl_setopt_array($ch, array(
+            CURLOPT_CUSTOMREQUEST => 'PATCH',
+            CURLOPT_POSTFIELDS => array(
+                $field => new \CURLFile($filepath)
+            )
+        ));
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $headers = array('Content-Type: multipart/form-data');
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+        // var_dump($response);
+    }
+
+    /**
      * @param string $email
      * @param string $password
      * @return void
