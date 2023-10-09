@@ -39,4 +39,7 @@ $pb->collection(collectionIdOrName)->update(string $recordId, array $bodyParams 
 
 // Deletes a single record by its id.
 $pb->collection(collectionIdOrName)->delete(string $recordId, array $queryParams = []);
+
+// Custom Logic
+$pb->collection(collectionIdOrName)->upload('abcdefghijkl','webp', './converted/filepath.png');
 ```

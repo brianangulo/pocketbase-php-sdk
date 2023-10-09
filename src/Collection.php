@@ -55,7 +55,7 @@ class Collection
      */
     public function upload(string $recordId, string $field, string $filepath): void
     {
-        $ch = curl_init($this->url . "/api/collections/gallery_media/records/" . $recordId);
+        $ch = curl_init($this->url . "/api/collections/".$this->collection."/records/" . $recordId);
         curl_setopt_array($ch, array(
             CURLOPT_CUSTOMREQUEST => 'PATCH',
             CURLOPT_POSTFIELDS => array(
