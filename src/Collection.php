@@ -76,7 +76,7 @@ class Collection
     /**
      * @param string $email
      * @param string $password
-     * @return void
+     * @return array|null returns the response user from the api or null if invalid
      */
     public function authAsUser(string $email, string $password)
     {
@@ -85,7 +85,7 @@ class Collection
             $this->token = $result['token'];
             return json_decode($result, JSON_FORCE_OBJECT);
         }
-        
+
         return null;
     }
 
