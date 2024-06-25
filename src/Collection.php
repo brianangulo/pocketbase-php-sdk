@@ -20,7 +20,7 @@ class Collection
     /**
      * @var string
      */
-    private static string $token = '';
+    public string $token = '';
 
     /**
      * @param string $url
@@ -82,7 +82,7 @@ class Collection
     {
         $result = $this->doRequest($this->url . "/api/collections/users/auth-with-password", 'POST', ['identity' => $email, 'password' => $password]);
         if (!empty($result['token'])) {
-            self::$token = $result['token'];
+            $this->token = $result['token'];
         }
     }
 
@@ -155,10 +155,10 @@ class Collection
     {
         $ch = curl_init();
 
-        if (self::$token != '') {
+        if ($this->token != '') {
             $headers = array(
                 'Content-Type:application/json',
-                'Authorization: ' . self::$token
+                'Authorization: ' . $this->token
             );
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
@@ -197,6 +197,6 @@ class Collection
         $bodyParams['identity'] = $email;
         $bodyParams['password'] = $password;
         $output = $this->doRequest($this->url . "/api/admins/auth-with-password", 'POST', $bodyParams);
-        self::$token = json_decode($output, true)['token'];
+        $this->token = json_decode($output, true)['token'];
     }
 }
