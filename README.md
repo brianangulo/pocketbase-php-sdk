@@ -1,3 +1,5 @@
+Credit to Jonathan Martz this repo is a fork of https://gitlab.jonathan-martz.de/softwareentwicklung/pocketbase-php-sdk
+
 ### Php Sdk for Pocketbase
 
 ***
