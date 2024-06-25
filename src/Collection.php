@@ -81,12 +81,19 @@ class Collection
     public function authAsUser(string $email, string $password)
     {
         $result = $this->doRequest($this->url . "/api/collections/users/auth-with-password", 'POST', ['identity' => $email, 'password' => $password]);
-        if (!empty($result['token'])) {
-            $this->token = $result['token'];
-            return json_decode($result, JSON_FORCE_OBJECT);
+        // Check if $result is not empty and decode the JSON response
+        if ($result) {
+            $response = json_decode($result, true); // Decode JSON to associative array
+
+            // Check if token exists in the response
+            if (!empty($response['token'])) {
+                $this->token = $response['token'];
+                return $response; // Return the decoded response
+            }
         }
 
-        return null;
+        return null; // Return null if token not found or request failed
+
     }
 
     /**
