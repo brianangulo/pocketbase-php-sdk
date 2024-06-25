@@ -83,7 +83,10 @@ class Collection
         $result = $this->doRequest($this->url . "/api/collections/users/auth-with-password", 'POST', ['identity' => $email, 'password' => $password]);
         if (!empty($result['token'])) {
             $this->token = $result['token'];
+            return json_decode($result, JSON_FORCE_OBJECT);
         }
+        
+        return null;
     }
 
     /**
