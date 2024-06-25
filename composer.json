@@ -1,9 +1,9 @@
 {
-  "name": "jonathan-martz/pocketbase-php-sdk",
+  "name": "brianangulo/pocketbase-php-sdk",
   "license": "MIT",
   "authors": [
     {
-      "name": "Jonathan Martz",
+      "name": "Brian Angulo",
       "role": "Maintainer"
     }
   ],
